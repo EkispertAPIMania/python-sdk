@@ -1,0 +1,5 @@
+tests/.env
+dist
+ekispert.egg-info
+__pycache__
+*.pyc

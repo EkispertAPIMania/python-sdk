@@ -10,24 +10,22 @@ from ekispert.client import Ekispert
 def load_env():
   load_dotenv()
 
-class TestStationQuery:
+class TestStationLightQuery:
   def test_query(self):
     client = Ekispert(os.getenv('API_KEY'))
-    query = client.stationQuery()
+    query = client.stationLightQuery()
     points = query.execute()
     assert len(points) > 0
     assert points[0].station.name is not None
-    assert points[0].geo_point is not None
     assert points[0].prefecture is not None
 
   def test_query_tokyo(self):
     client = Ekispert(os.getenv('API_KEY'))
-    query = client.stationQuery()
-    query.code = 22828
+    query = client.stationLightQuery()
+    query.name = '東京'
     points = query.execute()
-    assert len(points) == 1
+    assert len(points) > 0
     assert points[0].station.name == '東京'
-    assert points[0].geo_point.lati_d == 35.678083
     assert points[0].prefecture.name == '東京都'
     assert points[0].prefecture.code == 13
 

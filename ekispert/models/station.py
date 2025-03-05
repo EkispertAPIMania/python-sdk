@@ -1,7 +1,10 @@
-from ..model import Model
-from .transport_type import TransportType
+from ..base import Base
 
-class Station(Model):
+from collections import namedtuple
+
+Type = namedtuple('Type', 'text detail')
+
+class Station(Base):
   def __init__(self, data = None):
     super().__init__()
     if data is None:
@@ -25,10 +28,12 @@ class Station(Model):
       case "type":
         # value is string or not
         if isinstance(value, str):
-          self.type = {
-            "text": value,
-          }
+          self.type = Type(
+            text = value,
+            detail = None)
         else:
-          self.type = TransportType(value)
+          self.type = Type(
+            text = value["text"],
+            detail = value["detail"])
       case _:
         raise ValueError(f"key: {key} is not defined in Station")

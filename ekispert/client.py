@@ -1,5 +1,8 @@
-from .query import Query
 from urllib.parse import urljoin, urlencode
+
+from ekispert.queries.search_course_plain import SearchCoursePlainQuery
+from .queries.station import StationQuery
+from .queries.station_light import StationLightQuery
 import requests
 
 class Ekispert:
@@ -7,7 +10,6 @@ class Ekispert:
 
   def __init__(self, api_key):
     self.api_key = api_key
-    Query.client = self
 	
   def get(self, path, params):
     # requst to Ekispert API
@@ -26,3 +28,12 @@ class Ekispert:
         print("Response content is not valid JSON")
     else:
       print(f"Request failed with status code {response.text}")
+
+  def stationQuery(self) -> StationQuery:
+    return StationQuery(self)
+
+  def stationLightQuery(self) -> StationLightQuery:
+    return StationLightQuery(self)
+
+  def searchCoursePlainQuery(self) -> SearchCoursePlainQuery:
+    return SearchCoursePlainQuery(self)

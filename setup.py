@@ -2,12 +2,13 @@ from setuptools import setup, find_packages
 
 setup(
   name='ekispert',
-  version='0.1.1',
+  version='0.1.6',
   packages=find_packages(),
   install_requires=[
     # 依存パッケージをここに列挙
     'requests',
   ],
+  include_package_data=True,
   entry_points={
     'console_scripts': [
       'my_command=my_package.module:main_function',

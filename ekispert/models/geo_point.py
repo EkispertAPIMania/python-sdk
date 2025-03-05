@@ -1,6 +1,6 @@
-from ..model import Model
+from ..base import Base
 
-class GeoPoint(Model):
+class GeoPoint(Base):
   def __init__(self, data = None):
     super().__init__()
     if data is None:

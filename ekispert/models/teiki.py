@@ -1,6 +1,6 @@
 from ..base import Base
 
-class Cost(Base):
+class Teiki(Base):
   def __init__(self, data = None):
     super().__init__()
     if data is None:
@@ -13,11 +13,11 @@ class Cost(Base):
 
   def set(self, key: str, value: any):
     match key.lower():
-      case "minute":
-        self.minute = int(value)
-      case "transfercount":
-        self.transfer_count = int(value)
-      case "baseindex":
-        self.base_index = int(value)
+      case "serializedata":
+        self.serialize_data = value
+      case "detailroute":
+        self.detail_route = value
+      case "displayroute":
+        self.display_route = value
       case _:
         raise ValueError(f"key: {key} is not defined in Cost")

@@ -65,6 +65,28 @@ assert courses[0].prices[0].one_way == 2530
 assert courses[0].prices[0].round == 5060
 ```
 
+## 定期券の払い戻し計算
+
+定期券の払い戻し計算APIを実行します。検索条件、結果は[定期券の払い戻し計算 \- 駅すぱあと API Documents 駅データ・経路検索のWebAPI](https://docs.ekispert.com/v1/api/course/repayment.html)を参照してください。
+
+```python
+query = client.courseRepaymentQuery()
+query.serializeData = '1,true'
+query.checkEngineVersion = False
+query.serializeData = 'VkV4QaECp9nIAsMCpgEz76YDpgEz76UEkcIBQwAAAAKmATPvpQPKAQECAQMBBAEHAQgBCgIPQv9_EKX_9xSRpVjVBZfBAqVYj8ECpVjVwQKlWXvBAqVZLMECpVkPwQKlWvHBAqVXwAaSwwEBAgEDxwGlWFoCDQMPBQMGRDk0NlQHBAgDwwEBAgEDxgGmAAIwMwIVAxYFAwcGCAUHksUBpgEz76gDpQJfBKUCZgUACADGAaYBM||oAgEDpQJwBKUCcQUACAAIksQEAQUBB6RtCAHGAgEEAgUBBgEHpQEvCAIJksEDAcMBAQIBAwEPkcUBkwABAgKSwwEAAgADAMMBAQIBAwEDksMBAAIAAwDDAQECAQMBBJIAAQWSAAA*--T3221233232319:F332112212000:A23121141:--88eed71f6168dfe5ab30b8cc5e938621dd3806a7--0--0--0--284'
+results = query.execute()
+assert results['repayment_list'] is not None
+assert results['teiki_route'] is not None
+assert results['repayment_list'].repayment_date is not None
+assert results['repayment_list'].repayment_tickets is not None
+assert results['repayment_list'].repayment_tickets[0].fee_price_value is not None
+assert results['teiki_route'].section_separator is not None
+assert results['teiki_route'].teiki_route_sections is not None
+assert results['teiki_route'].teiki_route_sections[0].points is not None
+assert results['teiki_route'].teiki_route_sections[0].points[0].station.name is not None
+assert results['teiki_route'].teiki_route_sections[0].points[0].prefecture is not None
+```
+
 ## ライセンス
 
 MITライセンスです。

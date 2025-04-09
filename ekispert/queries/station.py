@@ -67,10 +67,7 @@ class StationQuery(Base):
       params['direction'] = self.direction
     if self.corporationBinds:
       params['corporationBind'] = ':'.join(self.corporationBinds)
-    if self.addGateGroup:
-      params['addGateGroup'] = 'true'
-    else:
-      params['addGateGroup'] = 'false'
+    params['addGateGroup'] = self.get_as_boolean_string(self.addGateGroup)
     if self.communityBus:
       params['communityBus'] = self.communityBus
     if self.gcs:

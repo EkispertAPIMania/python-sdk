@@ -49,14 +49,9 @@ class SearchCoursePlainQuery(Base):
       params['date'] = self.date.strftime('%Y%m%d')
     if self.gcs:
       params['gcs'] = self.gcs
-    if self.plane:
-      params['plane'] = 'true'
-    if self.shinkansen:
-      params['shinkansen'] = 'true'
-    if self.limitedExpress:
-      params['limitedExpress'] = 'true'
-    if self.bus:
-      params['bus'] = 'true'
-    if self.gcs:
-      params['gcs'] = self.gcs
+    params['plane'] = self.get_as_boolean_string(self.plane)
+    params['shinkansen'] = self.get_as_boolean_string(self.shinkansen)
+    params['limitedExpress'] = self.get_as_boolean_string(self.limitedExpress)
+    params['bus'] = self.get_as_boolean_string(self.bus)
+    params['gcs'] = self.gcs
     return params

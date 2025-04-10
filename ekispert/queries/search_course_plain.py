@@ -17,7 +17,7 @@ class SearchCoursePlainQuery(Base):
     self.date : datetime = datetime.today()
     self.plane : bool = True
     self.shinkansen : bool = True
-    self.limitedExpress : bool = True
+    self.limited_express : bool = True
     self.bus : bool = True
     self.gcs : Gcs = 'tokyo'
 
@@ -51,7 +51,7 @@ class SearchCoursePlainQuery(Base):
       params['gcs'] = self.gcs
     params['plane'] = self.get_as_boolean_string(self.plane)
     params['shinkansen'] = self.get_as_boolean_string(self.shinkansen)
-    params['limitedExpress'] = self.get_as_boolean_string(self.limitedExpress)
+    params['limitedExpress'] = self.get_as_boolean_string(self.limited_express)
     params['bus'] = self.get_as_boolean_string(self.bus)
     params['gcs'] = self.gcs
     return params

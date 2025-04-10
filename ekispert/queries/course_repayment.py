@@ -4,7 +4,11 @@ from ekispert.models.repayment_list import RepaymentList
 from ekispert.models.teiki_route import TeikiRoute
 from ..base import Base
 from ..models.point import Point
-from typing import List, Literal
+from typing import List, Literal, TypedDict
+
+class CourseRepaymentResponse(TypedDict):
+  repayment_list: RepaymentList
+  teiki_route: TeikiRoute
 
 ValidityPeriod = Literal[1, 3, 6, 12]
 class CourseRepaymentQuery(Base):
@@ -14,16 +18,16 @@ class CourseRepaymentQuery(Base):
     super().__init__()
     self.client = client
 
-    self.serializeData : str = ''
-    self.checkEngineVersion : bool = True
-    self.startDate : datetime = datetime.now()
-    self.buyDate : datetime = datetime.now()
-    self.repaymentDate : datetime = datetime.now()
-    self.validityPeriod : ValidityPeriod = 6
-    self.changeSection : bool = False
+    self.serialize_data : str = ''
+    self.check_engine_version : bool = True
+    self.start_date : datetime = datetime.now()
+    self.buy_date : datetime = datetime.now()
+    self.repayment_date : datetime = datetime.now()
+    self.validity_period : ValidityPeriod = 6
+    self.change_section : bool = False
     self.separator : str = ''
 
-  def execute(self) -> List[Point]:
+  def execute(self) -> CourseRepaymentResponse:
     data = self.client.get(self.base_path, self.generate_params())
     result_set = data['ResultSet']
     repayment_list = result_set['RepaymentList']
@@ -42,19 +46,19 @@ class CourseRepaymentQuery(Base):
     params = {
       'key': self.client.api_key,
     }
-    if self.serializeData == '':
-      raise ValueError('serializeData is required')
-    params['serializeData'] = self.serializeData
-    params['checkEngineVersion'] = self.get_as_boolean_string(self.checkEngineVersion)
-    if self.startDate:
-      params['startDate'] = self.startDate.strftime('%Y%m%d')
-    if self.buyDate:
-      params['buyDate'] = self.buyDate.strftime('%Y%m%d')
-    if self.repaymentDate:
-      params['repaymentDate'] = self.repaymentDate.strftime('%Y%m%d')
-    if self.validityPeriod:
-      params['validityPeriod'] = self.validityPeriod
-    params['changeSection'] = self.get_as_boolean_string(self.changeSection)
+    if self.serialize_data == '':
+      raise ValueError('serialize_data is required')
+    params['serializeData'] = self.serialize_data
+    params['checkEngineVersion'] = self.get_as_boolean_string(self.check_engine_version)
+    if self.start_date:
+      params['startDate'] = self.start_date.strftime('%Y%m%d')
+    if self.buy_date:
+      params['buyDate'] = self.buy_date.strftime('%Y%m%d')
+    if self.repayment_date:
+      params['repaymentDate'] = self.repayment_date.strftime('%Y%m%d')
+    if self.validity_period:
+      params['validityPeriod'] = self.validity_period
+    params['changeSection'] = self.get_as_boolean_string(self.change_section)
     if self.separator:
       params['separator'] = self.separator
     return params

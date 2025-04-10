@@ -13,19 +13,19 @@ class StationQuery(Base):
     super().__init__()
     self.client = client
     self.name : str = None
-    self.oldName : str = None
+    self.old_name : str = None
     self.code : int = None
-    self.corporationName : str = None
-    self.railName : str = None
-    self.operationLineCode : str = None
+    self.corporation_name : str = None
+    self.rail_name : str = None
+    self.operation_line_code : str = None
     self.types : List[TrafficType] = None
-    self.prefectureCodes : List[int] = None
+    self.prefecture_codes : List[int] = None
     self.offset : int = 1
     self.limit : int = 100
     self.direction : Direction = 'up'
-    self.corporationBinds : List[str] = None
-    self.addGateGroup : bool = False
-    self.communityBus : str = 'contain'
+    self.corporation_binds : List[str] = None
+    self.add_gate_group : bool = False
+    self.community_bus : str = 'contain'
     self.gcs : Gcs = 'tokyo'
 
   def execute(self) -> List[Point]:
@@ -45,19 +45,19 @@ class StationQuery(Base):
     }
     if self.name:
       params['name'] = self.name
-    if self.oldName:
-      params['oldName'] = self.oldName
+    if self.old_name:
+      params['oldName'] = self.old_name
     if self.code:
       params['code'] = self.code
-    if self.corporationName:
-      params['corporationName'] = self.corporationName
-    if self.railName:
-      params['railName'] = self.railName
-    if self.operationLineCode:
-      params['operationLineCode'] = self.operationLineCode
+    if self.corporation_name:
+      params['corporationName'] = self.corporation_name
+    if self.rail_name:
+      params['railName'] = self.rail_name
+    if self.operation_line_code:
+      params['operationLineCode'] = self.operation_line_code
     if self.types:
       params['type'] = ':'.join(self.types)
-    if self.prefectureCodes:
+    if self.prefecture_codes:
       params['prefectureCode'] = ':'.join(map(str, self.prefectureCodes))
     if self.offset:
       params['offset'] = self.offset
@@ -65,11 +65,11 @@ class StationQuery(Base):
       params['limit'] = self.limit
     if self.direction:
       params['direction'] = self.direction
-    if self.corporationBinds:
-      params['corporationBind'] = ':'.join(self.corporationBinds)
-    params['addGateGroup'] = self.get_as_boolean_string(self.addGateGroup)
-    if self.communityBus:
-      params['communityBus'] = self.communityBus
+    if self.corporation_binds:
+      params['corporationBind'] = ':'.join(self.corporation_binds)
+    params['addGateGroup'] = self.get_as_boolean_string(self.add_gate_group)
+    if self.community_bus:
+      params['communityBus'] = self.community_bus
     if self.gcs:
       params['gcs'] = self.gcs
     return params

@@ -12,12 +12,12 @@ class StationLightQuery(Base):
     super().__init__()
     self.client = client
     self.name : str = None
-    self.nameMatchType: NameMatchType = 'partial'
+    self.name_match_type: NameMatchType = 'partial'
     self.code : int = None
     self.types : List[TrafficType] = None
-    self.prefectureCodes : List[int] = None
-    self.corporationBinds : List[str] = None
-    self.communityBus : str = 'contain'
+    self.prefecture_codes : List[int] = None
+    self.corporation_binds : List[str] = None
+    self.community_bus : str = 'contain'
 
   def execute(self) -> List[Point]:
     data = self.client.get(self.base_path, self.generate_params())
@@ -36,16 +36,16 @@ class StationLightQuery(Base):
     }
     if self.name:
       params['name'] = self.name
-    if self.nameMatchType:
-      params['nameMatchType'] = self.nameMatchType
+    if self.name_match_type:
+      params['nameMatchType'] = self.name_match_type
     if self.code:
       params['code'] = self.code
     if self.types:
       params['type'] = ':'.join(self.types)
-    if self.prefectureCodes:
-      params['prefectureCode'] = ':'.join(map(str, self.prefectureCodes))
-    if self.corporationBinds:
-      params['corporationBind'] = ':'.join(self.corporationBinds)
-    if self.communityBus:
-      params['communityBus'] = self.communityBus
+    if self.prefecture_codes:
+      params['prefectureCode'] = ':'.join(map(str, self.prefecture_codes))
+    if self.corporation_binds:
+      params['corporationBind'] = ':'.join(self.corporation_binds)
+    if self.community_bus:
+      params['communityBus'] = self.community_bus
     return params

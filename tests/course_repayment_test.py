@@ -19,20 +19,20 @@ class TestCourseRepaymentQuery:
     query.check_engine_version = False
     query.serialize_data = 'VkV4QaECp9nIAsMCpgEz76YDpgEz76UEkcIBQwAAAAKmATPvpQPKAQECAQMBBAEHAQgBCgIPQv9_EKX_9xSRpVjVBZfBAqVYj8ECpVjVwQKlWXvBAqVZLMECpVkPwQKlWvHBAqVXwAaSwwEBAgEDxwGlWFoCDQMPBQMGRDk0NlQHBAgDwwEBAgEDxgGmAAIwMwIVAxYFAwcGCAUHksUBpgEz76gDpQJfBKUCZgUACADGAaYBM||oAgEDpQJwBKUCcQUACAAIksQEAQUBB6RtCAHGAgEEAgUBBgEHpQEvCAIJksEDAcMBAQIBAwEPkcUBkwABAgKSwwEAAgADAMMBAQIBAwEDksMBAAIAAwDDAQECAQMBBJIAAQWSAAA*--T3221233232319:F332112212000:A23121141:--88eed71f6168dfe5ab30b8cc5e938621dd3806a7--0--0--0--284'
     results = query.execute()
-    assert results['repayment_list'] is not None
-    assert results['teiki_route'] is not None
-    assert results['repayment_list'].repayment_date is not None
-    assert results['repayment_list'].repayment_tickets is not None
-    assert results['repayment_list'].repayment_tickets[0].fee_price_value is not None
-    assert results['repayment_list'].repayment_tickets[0].repay_price_value is not None
-    assert results['repayment_list'].repayment_tickets[0].state is not None
-    assert results['repayment_list'].repayment_tickets[0].used_price_value is not None
-    assert results['repayment_list'].repayment_tickets[0].calculate_target is not None
-    assert results['teiki_route'].section_separator is not None
-    assert results['teiki_route'].teiki_route_sections is not None
-    assert results['teiki_route'].teiki_route_sections[0].points is not None
-    assert results['teiki_route'].teiki_route_sections[0].points[0].station.name is not None
-    assert results['teiki_route'].teiki_route_sections[0].points[0].prefecture is not None
+    assert results.repayment_list is not None
+    assert results.teiki_route is not None
+    assert results.repayment_list.repayment_date is not None
+    assert results.repayment_list.repayment_tickets is not None
+    assert results.repayment_list.repayment_tickets[0].fee_price_value is not None
+    assert results.repayment_list.repayment_tickets[0].repay_price_value is not None
+    assert results.repayment_list.repayment_tickets[0].state is not None
+    assert results.repayment_list.repayment_tickets[0].used_price_value is not None
+    assert results.repayment_list.repayment_tickets[0].calculate_target is not None
+    assert results.teiki_route.section_separator is not None
+    assert results.teiki_route.teiki_route_sections is not None
+    assert results.teiki_route.teiki_route_sections[0].points is not None
+    assert results.teiki_route.teiki_route_sections[0].points[0].station.name is not None
+    assert results.teiki_route.teiki_route_sections[0].points[0].prefecture is not None
 
   def test_demo_query(self):
     client = Ekispert(os.getenv('API_KEY'))
@@ -48,9 +48,9 @@ class TestCourseRepaymentQuery:
     query2.separator = ['1', 'true']
     results2 = query2.execute()
     assert results2 is not None
-    assert results2['repayment_list'] is not None
-    assert results2['repayment_list'].validity_period == 6
-    assert results2['repayment_list'].repayment_tickets[0].fee_price_value == 220
-    assert results2['teiki_route'].teiki_route_sections[0].points[0].prefecture.name == '東京都'
-    assert results2['teiki_route'].teiki_route_sections[0].points[0].station.name == '高円寺'
-    assert results2['teiki_route'] is not None
+    assert results2.repayment_list is not None
+    assert results2.repayment_list.validity_period == 6
+    assert results2.repayment_list.repayment_tickets[0].fee_price_value == 220
+    assert results2.teiki_route.teiki_route_sections[0].points[0].prefecture.name == '東京都'
+    assert results2.teiki_route.teiki_route_sections[0].points[0].station.name == '高円寺'
+    assert results2.teiki_route is not None

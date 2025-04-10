@@ -3,12 +3,14 @@ from datetime import datetime
 from ekispert.models.repayment_list import RepaymentList
 from ekispert.models.teiki_route import TeikiRoute
 from ..base import Base
-from ..models.point import Point
-from typing import List, Literal, TypedDict
+from typing import List, Literal
 
-class CourseRepaymentResponse(TypedDict):
+class CourseRepaymentResponse:
   repayment_list: RepaymentList
   teiki_route: TeikiRoute
+  def __init__(self, repayment_list: RepaymentList, teiki_route: TeikiRoute):
+    self.repayment_list = repayment_list
+    self.teiki_route = teiki_route
 
 ValidityPeriod = Literal[1, 3, 6, 12]
 class CourseRepaymentQuery(Base):
@@ -33,14 +35,14 @@ class CourseRepaymentQuery(Base):
     repayment_list = result_set['RepaymentList']
     teiki_route = result_set['TeikiRoute']
     if repayment_list is None and teiki_route is None:
-      return {
-        'repayment_list': None,
-        'teiki_route': None,
-      }
-    return {
-      'repayment_list': RepaymentList(repayment_list),
-      'teiki_route': TeikiRoute(teiki_route),
-    }
+      return CourseRepaymentResponse(
+        repayment_list=None,
+        teiki_route=None,
+      )
+    return CourseRepaymentResponse(
+      repayment_list=RepaymentList(repayment_list),
+      teiki_route=TeikiRoute(teiki_route),
+    )
 
   def generate_params(self) -> dict:
     params = {

@@ -25,7 +25,7 @@ class CourseRepaymentQuery(Base):
     self.repayment_date : datetime = datetime.now()
     self.validity_period : ValidityPeriod = 6
     self.change_section : bool = False
-    self.separator : str = ''
+    self.separator : List[str] = []
 
   def execute(self) -> CourseRepaymentResponse:
     data = self.client.get(self.base_path, self.generate_params())
@@ -59,6 +59,6 @@ class CourseRepaymentQuery(Base):
     if self.validity_period:
       params['validityPeriod'] = self.validity_period
     params['changeSection'] = self.get_as_boolean_string(self.change_section)
-    if self.separator:
-      params['separator'] = self.separator
+    if self.separator is not None:
+      params['separator'] = ','.join(self.separator)
     return params

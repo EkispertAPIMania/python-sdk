@@ -1,7 +1,7 @@
 from urllib.parse import urljoin, urlencode
 
 from ekispert.queries.course_repayment import CourseRepaymentQuery
-from ekispert.queries.search_course_plain import SearchCoursePlainQuery
+from ekispert.queries.course_plain import CoursePlainQuery
 from .queries.station import StationQuery
 from .queries.station_light import StationLightQuery
 import requests
@@ -36,8 +36,8 @@ class Ekispert:
   def stationLightQuery(self) -> StationLightQuery:
     return StationLightQuery(self)
 
-  def searchCoursePlainQuery(self) -> SearchCoursePlainQuery:
-    return SearchCoursePlainQuery(self)
+  def coursePlainQuery(self) -> CoursePlainQuery:
+    return CoursePlainQuery(self)
 
   def courseRepaymentQuery(self) -> CourseRepaymentQuery:
     return CourseRepaymentQuery(self)

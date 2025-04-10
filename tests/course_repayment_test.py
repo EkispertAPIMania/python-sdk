@@ -15,9 +15,9 @@ class TestCourseRepaymentQuery:
   def test_query(self):
     client = Ekispert(os.getenv('API_KEY'))
     query = client.courseRepaymentQuery()
-    query.serialize_data = '1,true'
+    query.separator = ['1', 'true']
     query.check_engine_version = False
-    query.serializeData = 'VkV4QaECp9nIAsMCpgEz76YDpgEz76UEkcIBQwAAAAKmATPvpQPKAQECAQMBBAEHAQgBCgIPQv9_EKX_9xSRpVjVBZfBAqVYj8ECpVjVwQKlWXvBAqVZLMECpVkPwQKlWvHBAqVXwAaSwwEBAgEDxwGlWFoCDQMPBQMGRDk0NlQHBAgDwwEBAgEDxgGmAAIwMwIVAxYFAwcGCAUHksUBpgEz76gDpQJfBKUCZgUACADGAaYBM||oAgEDpQJwBKUCcQUACAAIksQEAQUBB6RtCAHGAgEEAgUBBgEHpQEvCAIJksEDAcMBAQIBAwEPkcUBkwABAgKSwwEAAgADAMMBAQIBAwEDksMBAAIAAwDDAQECAQMBBJIAAQWSAAA*--T3221233232319:F332112212000:A23121141:--88eed71f6168dfe5ab30b8cc5e938621dd3806a7--0--0--0--284'
+    query.serialize_data = 'VkV4QaECp9nIAsMCpgEz76YDpgEz76UEkcIBQwAAAAKmATPvpQPKAQECAQMBBAEHAQgBCgIPQv9_EKX_9xSRpVjVBZfBAqVYj8ECpVjVwQKlWXvBAqVZLMECpVkPwQKlWvHBAqVXwAaSwwEBAgEDxwGlWFoCDQMPBQMGRDk0NlQHBAgDwwEBAgEDxgGmAAIwMwIVAxYFAwcGCAUHksUBpgEz76gDpQJfBKUCZgUACADGAaYBM||oAgEDpQJwBKUCcQUACAAIksQEAQUBB6RtCAHGAgEEAgUBBgEHpQEvCAIJksEDAcMBAQIBAwEPkcUBkwABAgKSwwEAAgADAMMBAQIBAwEDksMBAAIAAwDDAQECAQMBBJIAAQWSAAA*--T3221233232319:F332112212000:A23121141:--88eed71f6168dfe5ab30b8cc5e938621dd3806a7--0--0--0--284'
     results = query.execute()
     assert results['repayment_list'] is not None
     assert results['teiki_route'] is not None
@@ -36,11 +36,21 @@ class TestCourseRepaymentQuery:
 
   def test_demo_query(self):
     client = Ekispert(os.getenv('API_KEY'))
-    query = client.searchCoursePlainQuery()
-    query.via_list = ['高円寺', '東京']
+    query = client.coursePlainQuery()
+    query.from_ = '高円寺'
+    query.to = '東京'
     query.date = datetime.now()
     results = query.execute()
     assert results is not None
 
     query2 = client.courseRepaymentQuery()
-    query2.serializeData = results[0].serialize_data
+    query2.serialize_data = results[0].serialize_data
+    query2.separator = ['1', 'true']
+    results2 = query2.execute()
+    assert results2 is not None
+    assert results2['repayment_list'] is not None
+    assert results2['repayment_list'].validity_period == 6
+    assert results2['repayment_list'].repayment_tickets[0].fee_price_value == 220
+    assert results2['teiki_route'].teiki_route_sections[0].points[0].prefecture.name == '東京都'
+    assert results2['teiki_route'].teiki_route_sections[0].points[0].station.name == '高円寺'
+    assert results2['teiki_route'] is not None

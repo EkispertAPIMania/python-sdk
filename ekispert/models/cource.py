@@ -25,7 +25,12 @@ class Course(Base):
       case "serializedata":
         self.serialize_data = value
       case "passstatus":
-        self.pass_status = PassStatus(value)
+        # check value is array or not
+        value = self.get_as_array(value)
+        self.pass_statuses = []
+        for v in value:
+          if v is not None:
+            self.pass_statuses.append(PassStatus(v))
       case "price":
         value = self.get_as_array(value)
         self.prices = []

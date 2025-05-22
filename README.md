@@ -65,6 +65,26 @@ assert courses[0].prices[0].one_way == 2530
 assert courses[0].prices[0].round == 5060
 ```
 
+## 経路探索
+
+経路探索APIを実行します。検索条件、結果は[経路探索 \- 駅すぱあと API（旧：駅すぱあとWebサービス） Documents 駅データ・経路検索のWebAPI](https://docs.ekispert.com/v1/api/search/course/extreme.html)を参照してください。
+
+```python
+query = client.courseExtremeQuery()
+query.via_list = ['22671', '22741']
+query.answer_count = 1
+courses = query.execute()
+assert len(courses) == 1
+assert courses[0].serialize_data is not None
+assert courses[0].teiki.serialize_data is not None
+assert courses[0].routes[0].lines[0].train_id is not None
+assert courses[0].pass_statuses[0].name is not None
+assert courses[0].pass_statuses[0].kind is not None
+assert courses[0].prices[0].kind == "ChargeSummary"
+assert courses[0].routes[0].distance == 58
+assert courses[0].routes[0].exhaust_co2 == 116
+```
+
 ## 定期券の払い戻し計算
 
 定期券の払い戻し計算APIを実行します。検索条件、結果は[定期券の払い戻し計算 \- 駅すぱあと API Documents 駅データ・経路検索のWebAPI](https://docs.ekispert.com/v1/api/course/repayment.html)を参照してください。

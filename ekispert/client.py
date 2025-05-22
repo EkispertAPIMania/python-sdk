@@ -4,6 +4,7 @@ from ekispert.queries.course_repayment import CourseRepaymentQuery
 from ekispert.queries.course_plain import CoursePlainQuery
 from .queries.station import StationQuery
 from .queries.station_light import StationLightQuery
+from .queries.course_extreme import CourseExtremeQuery
 import requests
 
 class Ekispert:
@@ -19,6 +20,7 @@ class Ekispert:
     query_string = urlencode(params)
     # クエリパラメータを含む完全なURLを作成
     full_url_with_params = f"{full_url}?{query_string}"
+    print(full_url_with_params)
     headers = {'Accept': 'application/json'}
     response = requests.get(full_url_with_params, headers=headers)
     if response.status_code == 200:
@@ -41,3 +43,6 @@ class Ekispert:
 
   def courseRepaymentQuery(self) -> CourseRepaymentQuery:
     return CourseRepaymentQuery(self)
+
+  def courseExtremeQuery(self) -> CourseExtremeQuery:
+    return CourseExtremeQuery(self)

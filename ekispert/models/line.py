@@ -85,6 +85,8 @@ class Line(Base):
         self.typical_name = value
       case "stop":
         self.stop = Stop(value)
+      case "trainid":
+        self.train_id = value
       case _:
         raise ValueError(f"key: {key} is not defined in Line")
 

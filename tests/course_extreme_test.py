@@ -33,4 +33,4 @@ class TestCoursePlainQuery:
     query.via_list.append('新宿')
     courses = query.execute()
     assert courses[0].serialize_data is not None
-    # assert courses[0].teiki.serialize_data is not None
+    assert courses[0].teiki.serialize_data is None

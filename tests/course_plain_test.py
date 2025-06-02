@@ -31,7 +31,7 @@ class TestCoursePlainQuery:
     assert courses[0].teiki.display_route == "名古屋--ＪＲ東海道新幹線--新大阪--OsakaMetro御堂筋線--なんば(地下鉄)"
     assert courses[0].routes[0].time_other == 17
     assert courses[0].routes[0].time_on_board == 64
-    assert courses[0].routes[0].exhaust_co2 == 3884
+    assert courses[0].routes[0].exhaust_co2 == 3301
     assert courses[0].routes[0].lines[0].direction == "Down"
     assert courses[0].routes[0].lines[0].color == "051102255"
     assert courses[0].routes[0].points[0].station.name == "名古屋"

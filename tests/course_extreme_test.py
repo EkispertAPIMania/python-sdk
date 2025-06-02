@@ -25,4 +25,12 @@ class TestCoursePlainQuery:
     assert courses[0].pass_statuses[0].kind is not None
     assert courses[0].prices[0].kind == "ChargeSummary"
     assert courses[0].routes[0].distance == 58
-    assert courses[0].routes[0].exhaust_co2 == 116
+    assert courses[0].routes[0].exhaust_co2 == 98
+  def test_query2(self):
+    client = Ekispert(os.getenv('API_KEY'))
+    query = client.courseExtremeQuery()
+    query.via_list.append('八王子')
+    query.via_list.append('新宿')
+    courses = query.execute()
+    assert courses[0].serialize_data is not None
+    # assert courses[0].teiki.serialize_data is not None

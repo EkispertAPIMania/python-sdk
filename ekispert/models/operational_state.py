@@ -29,5 +29,7 @@ class OperationalState(Base):
           name = value["Name"])
       case "type":
         self.type = value
+      case "isstarting":
+        self.is_starting = value
       case _:
         raise ValueError(f"key: {key} is not defined in ArrivalState")

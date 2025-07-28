@@ -1,11 +1,11 @@
 from ekispert.models.trip_option import TripOption
-from ..base import Base
+from ..utils import Utils
 
 from collections import namedtuple
 
 Rate = namedtuple('Rate', 'text area')
 
-class Price(Base):
+class Price(Utils):
   def __init__(self, data = None):
     super().__init__()
     if data is None:

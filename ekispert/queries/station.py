@@ -1,4 +1,4 @@
-from ..base import Base
+from ..utils import Utils
 from ..models.point import Point
 from typing import List, Literal
 
@@ -6,7 +6,7 @@ TrafficType = Literal["train", "plane", "ship", "bus", "walk", "strange"]
 Direction = Literal["up", "down", "none"]
 Gcs = Literal["tokyo", "wgs84"]
 
-class StationQuery(Base):
+class StationQuery(Utils):
   base_path: str = '/v1/json/station'
 
   def __init__(self, client):

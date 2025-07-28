@@ -1,6 +1,7 @@
 from ..utils import Utils
+from .point import Point
 
-class Cost(Utils):
+class Base(Utils):
   def __init__(self, data = None):
     super().__init__()
     if data is None:
@@ -13,11 +14,7 @@ class Cost(Utils):
 
   def set(self, key: str, value: any):
     match key.lower():
-      case "minute":
-        self.minute = int(value)
-      case "transfercount":
-        self.transfer_count = int(value)
-      case "baseindex":
-        self.base_index = int(value)
+      case "point":
+        self.point = Point(value)
       case _:
-        raise ValueError(f"key: {key} is not defined in Cost")
+        raise ValueError(f"key: {key} is not defined in Base")

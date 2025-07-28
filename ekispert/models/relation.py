@@ -1,10 +1,10 @@
-from ..base import Base
+from ..utils import Utils
 
 from collections import namedtuple
 
 PriceRelation = namedtuple('PriceRelation', 'kind')
 
-class Relation(Base):
+class Relation(Utils):
   def __init__(self, data = None):
     super().__init__()
     if data is None:

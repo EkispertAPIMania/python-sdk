@@ -3,9 +3,9 @@ from ekispert.models.price import Price
 from ekispert.models.relation import Relation
 from ekispert.models.route import Route
 from ekispert.models.teiki import Teiki
-from ..base import Base
+from ..utils import Utils
 
-class Course(Base):
+class Course(Utils):
   def __init__(self, data = None):
     super().__init__()
     if data is None:

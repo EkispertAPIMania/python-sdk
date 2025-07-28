@@ -1,14 +1,14 @@
 from ekispert.models.change import Change
 from ekispert.models.operational_state import OperationalState
 from ekispert.models.stop import Stop
-from ..base import Base
+from ..utils import Utils
 
 from collections import namedtuple
 
 Comment = namedtuple('Comment', 'type')
 LineSymbol = namedtuple('LineSymbol', 'code name')
 Type = namedtuple('Type', 'text detail')
-class Line(Base):
+class Line(Utils):
   def __init__(self, data = None):
     super().__init__()
     if data is None:

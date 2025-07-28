@@ -1,9 +1,9 @@
-from ..base import Base
+from ..utils import Utils
 from collections import namedtuple
 
 Means = namedtuple('Means', 'type')
 
-class Car(Base):
+class Car(Utils):
   def __init__(self, data = None):
     super().__init__()
     if data is None:

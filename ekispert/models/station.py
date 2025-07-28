@@ -1,10 +1,10 @@
-from ..base import Base
+from ..utils import Utils
 
 from collections import namedtuple
 
 Type = namedtuple('Type', 'text detail')
 
-class Station(Base):
+class Station(Utils):
   def __init__(self, data = None):
     super().__init__()
     if data is None:

@@ -1,9 +1,9 @@
 from datetime import datetime
 
 from ekispert.models.repayment_ticket import RepaymentTicket
-from ..base import Base
+from ..utils import Utils
 
-class RepaymentList(Base):
+class RepaymentList(Utils):
   def __init__(self, data = None):
     super().__init__()
     if data is None:

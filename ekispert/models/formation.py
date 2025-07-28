@@ -1,7 +1,7 @@
 from ekispert.models.car import Car
-from ..base import Base
+from ..utils import Utils
 
-class Formation(Base):
+class Formation(Utils):
   def __init__(self, data = None):
     super().__init__()
     if data is None:

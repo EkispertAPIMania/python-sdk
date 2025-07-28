@@ -1,8 +1,8 @@
 from ekispert.models.line import Line
 from ekispert.models.point import Point
-from ..base import Base
+from ..utils import Utils
 
-class Route(Base):
+class Route(Utils):
   def __init__(self, data = None):
     super().__init__()
     if data is None:

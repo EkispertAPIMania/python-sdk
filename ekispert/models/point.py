@@ -1,4 +1,4 @@
-from ..base import Base
+from ..utils import Utils
 from .station import Station
 from .prefecture import Prefecture
 from .geo_point import GeoPoint
@@ -7,7 +7,7 @@ from collections import namedtuple
 
 Status = namedtuple('Status', 'code')
 
-class Point(Base):
+class Point(Utils):
   def __init__(self, data = None):
     super().__init__()
     self.costs = []
@@ -32,7 +32,7 @@ class Point(Base):
       case "getoff":
         self.get_off = value
       case "cost":
-        costs = self.get_as_array("costs")
+        costs = self.get_as_array(value)
         self.costs = list(map(lambda x: Cost(x), costs))
       case "status":
         self.status = Status(

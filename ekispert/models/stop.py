@@ -1,8 +1,8 @@
 from ekispert.models.operational_state import OperationalState
 from ekispert.models.point import Point
-from ..base import Base
+from ..utils import Utils
 
-class Stop(Base):
+class Stop(Utils):
   def __init__(self, data = None):
     super().__init__()
     if data is None:

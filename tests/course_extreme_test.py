@@ -33,4 +33,13 @@ class TestCoursePlainQuery:
     query.via_list.append('新宿')
     courses = query.execute()
     assert courses[0].serialize_data is not None
-    assert courses[0].teiki.serialize_data is None
+  def test_query3(self):
+    client = Ekispert(os.getenv('API_KEY'))
+    Ekispert.debug = True
+    query = client.courseExtremeQuery()
+    query.via_list.append('新宿')
+    query.via_list.append('恵比寿')
+    query.assign_teiki_serialize_data = "VkV4QaECp_rHAQEDpgEz7osEk8EBpViPwQGlWNXBAaVYuwWSwwEBA6RtBKVY1cQBAQIBA6RxBKVYuweRxQGlWI8CpVi7AwAEAQUACAEKAQ**--2ffa318938ac7a409fec1643d23af692c573ee53--0--79"
+    query.check_engine_version = False
+    courses = query.execute()
+    with_teiki = list(filter(lambda x: hasattr(x, 'type') and x.type == "withTeiki", courses[0].prices))

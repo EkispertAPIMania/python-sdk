@@ -1,6 +1,6 @@
-from ..base import Base
+from ..utils import Utils
 
-class PassStatus(Base):
+class PassStatus(Utils):
   def __init__(self, data = None):
     super().__init__()
     if data is None:

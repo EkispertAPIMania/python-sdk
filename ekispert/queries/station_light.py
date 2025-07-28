@@ -1,11 +1,11 @@
-from ..base import Base
+from ..utils import Utils
 from ..models.point import Point
 from typing import List, Literal
 
 TrafficType = Literal["train", "plane", "ship", "bus", "walk", "strange"]
 NameMatchType = Literal["forward", "partial"]
 
-class StationLightQuery(Base):
+class StationLightQuery(Utils):
   base_path: str = '/v1/json/station/light'
 
   def __init__(self, client):

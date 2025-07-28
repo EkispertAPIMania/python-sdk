@@ -1,11 +1,11 @@
 from datetime import datetime
 from ekispert.models.cource import Course
-from ..base import Base
+from ..utils import Utils
 from typing import List, Literal
 
 Gcs = Literal["tokyo", "wgs84"]
 
-class CoursePlainQuery(Base):
+class CoursePlainQuery(Utils):
   base_path: str = '/v1/json/search/course/plain'
 
   def __init__(self, client):

@@ -1,6 +1,6 @@
 from datetime import datetime
 from ekispert.models.cource import Course
-from ..base import Base
+from ..utils import Utils
 from typing import List, Literal
 
 Gcs = Literal["tokyo", "wgs84"]
@@ -8,7 +8,7 @@ SearchType = Literal["departure", "arrival", "lastTrain", "firstTrain", "plain"]
 Sort = Literal["ekispert", "price", "time", "teiki", "transfer", "co2", "teiki1", "teiki3", "teiki6"]
 OffpeakTeikiMode = Literal["offpeakTime", "peakTime"]
 
-class CourseExtremeQuery(Base):
+class CourseExtremeQuery(Utils):
   base_path: str = '/v1/json/search/course/extreme'
 
   def __init__(self, client):

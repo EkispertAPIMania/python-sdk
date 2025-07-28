@@ -1,7 +1,7 @@
 from ekispert.models.formation import Formation
-from ..base import Base
+from ..utils import Utils
 
-class Change(Base):
+class Change(Utils):
   def __init__(self, data = None):
     super().__init__()
     if data is None:

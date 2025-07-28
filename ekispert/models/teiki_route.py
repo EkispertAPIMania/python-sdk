@@ -1,8 +1,8 @@
 from ekispert.models.section_separator import SectionSeparator
 from ekispert.models.teiki_route_section import TeikiRouteSection
-from ..base import Base
+from ..utils import Utils
 
-class TeikiRoute(Base):
+class TeikiRoute(Utils):
   def __init__(self, data = None):
     super().__init__()
     if data is None:

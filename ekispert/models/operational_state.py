@@ -1,10 +1,10 @@
 from ekispert.models.geo_point import GeoPoint
-from ..base import Base
+from ..utils import Utils
 from collections import namedtuple
 
 DateTime = namedtuple('DateTime', 'operation')
 Gate = namedtuple('Gate', 'geo_point name')
-class OperationalState(Base):
+class OperationalState(Utils):
   def __init__(self, data = None):
     super().__init__()
     if data is None:

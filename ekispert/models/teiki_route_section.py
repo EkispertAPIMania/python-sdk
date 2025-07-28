@@ -1,7 +1,7 @@
 from ekispert.models.point import Point
-from ..base import Base
+from ..utils import Utils
 
-class TeikiRouteSection(Base):
+class TeikiRouteSection(Utils):
   def __init__(self, data = None):
     super().__init__()
     if data is None:

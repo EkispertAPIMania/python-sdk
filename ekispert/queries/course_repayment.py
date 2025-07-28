@@ -2,7 +2,7 @@ from datetime import datetime
 
 from ekispert.models.repayment_list import RepaymentList
 from ekispert.models.teiki_route import TeikiRoute
-from ..base import Base
+from ..utils import Utils
 from typing import List, Literal
 
 class CourseRepaymentResponse:
@@ -13,7 +13,7 @@ class CourseRepaymentResponse:
     self.teiki_route = teiki_route
 
 ValidityPeriod = Literal[1, 3, 6, 12]
-class CourseRepaymentQuery(Base):
+class CourseRepaymentQuery(Utils):
   base_path: str = '/v1/json/course/repayment'
 
   def __init__(self, client):

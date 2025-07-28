@@ -1,4 +1,4 @@
-class Base:
+class Utils:
   def get_as_boolean_string(self, data: bool) -> str:
     if data:
       return 'true'

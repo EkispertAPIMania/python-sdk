@@ -107,6 +107,32 @@ assert results['teiki_route'].teiki_route_sections[0].points[0].station.name is 
 assert results['teiki_route'].teiki_route_sections[0].points[0].prefecture is not None
 ```
 
+## 緯度経度からの周辺駅検索
+
+```py
+query = client.geoStationQuery()
+query.set_geo_point(langitude="35.6783055555556", longitude="139.770441666667", radius=1000, geodetic='tokyo')
+# または
+query.set_geo_point(langitude="35.6783055555556", longitude="139.770441666667", radius=1000)
+# または
+query.set_geo_point(langitude="35.6783055555556", longitude="139.770441666667", geodetic='tokyo')
+# または
+query.set_geo_point(langitude="35.6783055555556", longitude="139.770441666667")
+points = query.execute()
+assert(len(points) > 0)
+assert(isinstance(points[0], Point))
+assert(points[0].station.name is not None)
+assert(points[0].prefecture is not None)
+assert(points[0].prefecture.name is not None)
+assert(points[0].prefecture.code is not None)
+print(points[0].distance)
+
+print(points[0].station.name)
+print(points[0].prefecture)
+print(points[0].prefecture.name)
+print(points[0].prefecture.code)
+```
+
 ## ライセンス
 
 MITライセンスです。

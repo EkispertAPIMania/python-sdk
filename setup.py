@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
   name='ekispert',
-  version='0.4.0',
+  version='0.5.0',
   packages=find_packages(),
   install_requires=[
     # 依存パッケージをここに列挙

@@ -40,5 +40,7 @@ class Point(Utils):
         )
       case "serializedata":
         self.serialize_data = value
+      case "distance":
+        self.distance = value
       case _:
         raise ValueError(f"key: {key} is not defined in Point")

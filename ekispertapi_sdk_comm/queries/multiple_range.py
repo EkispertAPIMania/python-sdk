@@ -1,6 +1,6 @@
 from datetime import datetime
-from ekispert.models.point import Point
-from ekispert.models.base import Base
+from ..models.point import Point
+from ..models.base import Base
 from ..utils import Utils
 from typing import List
 

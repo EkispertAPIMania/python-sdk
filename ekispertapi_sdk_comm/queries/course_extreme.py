@@ -1,5 +1,5 @@
 from datetime import datetime
-from ekispert.models.cource import Course
+from ..models.cource import Course
 from ..utils import Utils
 from typing import List, Literal
 
@@ -25,7 +25,7 @@ class CourseExtremeQuery(Utils):
     self.answer_count : int = 5
     self.search_count : int = 5
     self.condition_detail : List[str] = ['T32212332323191', 'F332112212000010', 'A23121141']
-    self.corporation_bind : List[str] = []
+    self.corporation_binds : List[str] = []
     self.interrupt_corporation_list : List[str] = []
     self.interrupt_rail_list : List[str] = []
     self.interrupt_operation_line_code_list : List[str] = []
@@ -34,8 +34,8 @@ class CourseExtremeQuery(Utils):
     self.add_operation_line_pattern : bool = False
     self.check_engine_version : bool = True
     self.assign_teiki_serialize_data : str = None
-    self.assign_route : List[str] = []
-    self.assign_detail_route : List[str] = []
+    self.assign_routes : List[str] = []
+    self.assign_detail_routes : List[str] = []
     self.offpeak_teiki_mode : OffpeakTeikiMode = None
     self.assign_pass_class_index : int = None
     self.coupon : str = None
@@ -83,8 +83,8 @@ class CourseExtremeQuery(Utils):
       params['searchCount'] = self.search_count
     if len(self.condition_detail) > 0:
       params['conditionDetail'] = ':'.join(self.condition_detail)
-    if len(self.corporation_bind) > 0:
-      params['corporationBind'] = ':'.join(self.corporation_bind)
+    if len(self.corporation_binds) > 0:
+      params['corporationBind'] = ':'.join(self.corporation_binds)
     if len(self.interrupt_corporation_list) > 0:
       params['interruptCorporationList'] = ':'.join(self.interrupt_corporation_list)
     if len(self.interrupt_rail_list) > 0:
@@ -101,10 +101,10 @@ class CourseExtremeQuery(Utils):
       params['checkEngineVersion'] = self.get_as_boolean_string(self.check_engine_version)
     if self.assign_teiki_serialize_data is not None:
       params['assignTeikiSerializeData'] = self.assign_teiki_serialize_data
-    if len(self.assign_route) > 0:
-      params['assignRoute'] = ':'.join(self.assign_route)
-    if len(self.assign_detail_route) > 0:
-      params['assignDetailRoute'] = ':'.join(self.assign_detail_route)
+    if len(self.assign_routes) > 0:
+      params['assignRoute'] = ':'.join(self.assign_routes)
+    if len(self.assign_detail_routes) > 0:
+      params['assignDetailRoute'] = ':'.join(self.assign_detail_routes)
     if self.offpeak_teiki_mode is not None:
       params['offpeakTeikiMode'] = self.offpeak_teiki_mode
     if self.assign_pass_class_index is not None:

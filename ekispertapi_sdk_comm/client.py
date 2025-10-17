@@ -1,13 +1,13 @@
 from urllib.parse import urljoin, urlencode
 
-from ekispert.queries.course_repayment import CourseRepaymentQuery
-from ekispert.queries.course_plain import CoursePlainQuery
+from .queries.course_repayment import CourseRepaymentQuery
+from .queries.course_plain import CoursePlainQuery
 from .queries.station import StationQuery
 from .queries.station_light import StationLightQuery
 from .queries.course_extreme import CourseExtremeQuery
 from .queries.multiple_range import MultipleRangeQuery
 from .queries.geo_station import GeoStationQuery
-from ekispert.queries.multiple_range import MultipleRangeQuery
+from .queries.multiple_range import MultipleRangeQuery
 import requests
 
 class Ekispert:

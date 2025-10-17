@@ -1,6 +1,6 @@
-from ekispert.models.change import Change
-from ekispert.models.operational_state import OperationalState
-from ekispert.models.stop import Stop
+from .change import Change
+from .operational_state import OperationalState
+from .stop import Stop
 from ..utils import Utils
 
 from collections import namedtuple

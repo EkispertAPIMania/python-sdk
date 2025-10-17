@@ -1,5 +1,5 @@
 from datetime import datetime
-from ekispert.models.cource import Course
+from ..models.cource import Course
 from ..utils import Utils
 from typing import List, Literal
 

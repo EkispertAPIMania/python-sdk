@@ -1,22 +1,17 @@
 from setuptools import setup, find_packages
 
 setup(
-  name='ekispert',
-  version='0.5.0',
+  name='ekispertapi_sdk_comm',
+  version='0.6.1',
   packages=find_packages(),
   install_requires=[
     # 依存パッケージをここに列挙
     'requests',
   ],
   include_package_data=True,
-  entry_points={
-    'console_scripts': [
-      'my_command=my_package.module:main_function',
-    ],
-  },
   author='Atsushi Nakatsugawa',
   author_email='atsushi@moongift.co.jp',
-  description='SDK for Ekispert API',
+  description='SDK for Ekispert API Community Edition',
   long_description=open('README.md').read(),
   long_description_content_type='text/markdown',
   url='https://github.com/EkispertMania/python_sdk',

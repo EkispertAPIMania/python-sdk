@@ -1,4 +1,4 @@
-from ekispert.models.car import Car
+from .car import Car
 from ..utils import Utils
 
 class Formation(Utils):

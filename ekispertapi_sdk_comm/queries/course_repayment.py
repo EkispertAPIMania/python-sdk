@@ -1,7 +1,6 @@
 from datetime import datetime
-
-from ekispert.models.repayment_list import RepaymentList
-from ekispert.models.teiki_route import TeikiRoute
+from ..models.repayment_list import RepaymentList
+from ..models.teiki_route import TeikiRoute
 from ..utils import Utils
 from typing import List, Literal
 

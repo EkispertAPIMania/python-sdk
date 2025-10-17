@@ -5,7 +5,7 @@ sys.path.append(str(Path(__file__).resolve().parent.parent))
 from dotenv import load_dotenv
 import os
 import pytest
-from ekispert.client import Ekispert
+from ekispertapi_sdk_comm.client import Ekispert
 
 @pytest.fixture(autouse=True, scope='session')
 def load_env():

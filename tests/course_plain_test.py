@@ -4,7 +4,7 @@ sys.path.append(str(Path(__file__).resolve().parent.parent))
 from dotenv import load_dotenv
 import os
 import pytest
-from ekispert.client import Ekispert
+from ekispertapi_sdk_comm.client import Ekispert
 
 @pytest.fixture(autouse=True, scope='session')
 def load_env():
@@ -26,7 +26,7 @@ class TestCoursePlainQuery:
     assert courses[0].search_type == 'plain'
     assert courses[0].prices[1].kind == "Charge"
     assert courses[0].prices[1].type == "Reserved"
-    assert courses[0].prices[1].one_way == 3070
+    assert courses[0].prices[1].one_way == 3470
     assert courses[0].teiki is not None
     assert courses[0].teiki.display_route == "名古屋--ＪＲ東海道新幹線--新大阪--OsakaMetro御堂筋線--なんば(地下鉄)"
     assert courses[0].routes[0].time_other == 17

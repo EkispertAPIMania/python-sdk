@@ -1,4 +1,4 @@
-from ekispert.models.formation import Formation
+from .formation import Formation
 from ..utils import Utils
 
 class Change(Utils):

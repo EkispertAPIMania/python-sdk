@@ -1,5 +1,5 @@
-from ekispert.models.section_separator import SectionSeparator
-from ekispert.models.teiki_route_section import TeikiRouteSection
+from .section_separator import SectionSeparator
+from .teiki_route_section import TeikiRouteSection
 from ..utils import Utils
 
 class TeikiRoute(Utils):

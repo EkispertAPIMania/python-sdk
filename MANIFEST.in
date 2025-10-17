@@ -1,1 +1,1 @@
-recursive-include ekispert/* *
+recursive-include ekispertapi_sdk_comm *

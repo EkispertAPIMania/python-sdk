@@ -1,8 +1,9 @@
-from ekispert.models.pass_status import PassStatus
-from ekispert.models.price import Price
-from ekispert.models.relation import Relation
-from ekispert.models.route import Route
-from ekispert.models.teiki import Teiki
+from .pass_status import PassStatus
+from .price import Price
+from .relation import Relation
+from .route import Route
+from .teiki import Teiki
+from .assign_status import AssignStatus
 from ..utils import Utils
 
 class Course(Utils):
@@ -52,5 +53,7 @@ class Course(Utils):
         for v in value:
           if v is not None:
             self.routes.append(Route(v))
+      case "assignstatus":
+        self.assign_status = AssignStatus(value)
       case _:
         raise ValueError(f"key: {key} is not defined in Course")

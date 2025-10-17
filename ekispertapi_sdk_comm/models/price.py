@@ -1,4 +1,4 @@
-from ekispert.models.trip_option import TripOption
+from .trip_option import TripOption
 from ..utils import Utils
 
 from collections import namedtuple

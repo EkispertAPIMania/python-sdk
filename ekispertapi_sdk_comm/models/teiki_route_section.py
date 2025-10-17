@@ -1,4 +1,4 @@
-from ekispert.models.point import Point
+from .point import Point
 from ..utils import Utils
 
 class TeikiRouteSection(Utils):

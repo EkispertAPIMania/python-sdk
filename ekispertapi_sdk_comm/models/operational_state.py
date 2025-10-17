@@ -1,4 +1,4 @@
-from ekispert.models.geo_point import GeoPoint
+from .geo_point import GeoPoint
 from ..utils import Utils
 from collections import namedtuple
 

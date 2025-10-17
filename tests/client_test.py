@@ -2,7 +2,7 @@ from pathlib import Path
 import sys
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 
-from ekispert.client import Ekispert
+from ekispertapi_sdk_comm.client import Ekispert
 
 class TestClient:
     def test_init(self):

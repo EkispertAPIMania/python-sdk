@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from ekispert.models.repayment_ticket import RepaymentTicket
+from .repayment_ticket import RepaymentTicket
 from ..utils import Utils
 
 class RepaymentList(Utils):

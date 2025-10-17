@@ -1,5 +1,5 @@
-from ekispert.models.line import Line
-from ekispert.models.point import Point
+from .line import Line
+from .point import Point
 from ..utils import Utils
 
 class Route(Utils):

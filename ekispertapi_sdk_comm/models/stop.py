@@ -1,5 +1,5 @@
-from ekispert.models.operational_state import OperationalState
-from ekispert.models.point import Point
+from .operational_state import OperationalState
+from .point import Point
 from ..utils import Utils
 
 class Stop(Utils):

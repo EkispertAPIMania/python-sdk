@@ -1,13 +1,38 @@
+Metadata-Version: 2.4
+Name: ekispertapi_sdk_comm
+Version: 0.6.1
+Summary: SDK for Ekispert API Community Edition
+Home-page: https://github.com/EkispertMania/python_sdk
+Author: Atsushi Nakatsugawa
+Author-email: atsushi@moongift.co.jp
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: requests
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: license-file
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
 # 駅すぱあと API SDK for Python
 
-[駅すぱあと API](https://docs.ekispert.com/v1/index.html)をPythonから利用するためのSDKです。非公式のSDKになります。
+[駅すぱあと API](https://docs.ekispert.com/v1/index.html)をPythonから利用するためのSDKです。
 
 ## インストール
 
 `pip` でインストールします。
 
 ```
-pip install ekispertapi-sdk-comm
+pip install ekispertapi-sdk-comm==0.6.0
 ```
 
 ## 初期化
@@ -15,7 +40,7 @@ pip install ekispertapi-sdk-comm
 初期化時には、駅すぱあと APIのAPIキーを指定します。[APIキーはトライアル申し込みより取得](https://api-info.ekispert.com/form/trial/)してください。
 
 ```py
-from ekispertapi_sdk_comm.client import Ekispert
+from ekispert.client import Ekispert
 
 client = Ekispert("YOUR_API_KEY")
 ```

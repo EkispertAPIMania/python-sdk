@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
   name='ekispertapi_sdk_comm',
-  version='0.6.1',
+  version='0.6.2',
   packages=find_packages(),
   install_requires=[
     # 依存パッケージをここに列挙

@@ -19,5 +19,7 @@ class Cost(Utils):
         self.transfer_count = int(value)
       case "baseindex":
         self.base_index = int(value)
+      case "text":
+        self.text = str(value)
       case _:
         raise ValueError(f"key: {key} is not defined in Cost")
